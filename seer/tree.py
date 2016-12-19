@@ -1,8 +1,23 @@
 from abc import ABCMeta
+from functools import reduce
+
 
 
 class INode(metaclass=ABCMeta):
     pass
+
+
+class Program(object):
+
+    def __init__(self, children=[]):
+        self.__children = children
+
+    @property
+    def children(self):
+        return self.__children
+
+    def append_child(self, child):
+        self.__children.append(child)
 
 
 class Node(INode):
@@ -31,9 +46,14 @@ class TextNode(Node):
 
 class SelfNode(Node):
 
-    def __init__(self, parent, attributes=[]):
+    def __init__(self, parent, indent=0, attributes=[]):
         super(SelfNode, self).__init__(parent)
         self.__attributes = attributes
+        self.__indent = indent
+
+    @property
+    def indent(self):
+        return self.__indent
 
     @property
     def attributes(self):
@@ -45,8 +65,8 @@ class SelfNode(Node):
 
 class DefaultNode(SelfNode):
 
-    def __init__(self, parent, attributes=[], children=[]):
-        super(DefaultNode, self).__init__(parent, attributes)
+    def __init__(self, parent, indent=0, attributes=[], children=[]):
+        super(DefaultNode, self).__init__(parent, indent, attributes)
         self.__children = children
 
     @property
