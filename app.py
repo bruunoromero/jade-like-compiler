@@ -1,5 +1,4 @@
-from seer import Parser
-from seer.compiler import Compiler
+from seer import Parser, Compiler
 
 p = Parser('/Users/bruno/Desktop/Python/teste.seer')
 tree = p.parse()
