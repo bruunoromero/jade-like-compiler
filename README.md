@@ -7,14 +7,14 @@ the block of code above:
 ```
 html
   head
-    title teste
+    title my page title
   body
-    div(class=main) testando aqui meu compilador
+    div(class=main) this is a div
     input(type=text)
-    span teste
+    span I'm a span
     table
       tr
-        td mais um teste aqui
+        ohh, look, a table 
 ```
 
 becomes this:
@@ -22,22 +22,20 @@ becomes this:
 <html>
   <head>
     <title>
-      teste
+      my page title
     </title>
   </head>
   <body>
     <div class="main">
-      testando aqui meu compilador
+      this is a div
     </div>
     <input type="text"  />
     <span>
-      teste
+      I'm a span
     </span>
     <table>
       <tr>
-        <td>
-          mais um teste aqui
-        </td>
+        ohh, look, a table 
       </tr>
     </table>
   </body>
