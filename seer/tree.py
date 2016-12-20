@@ -1,15 +1,17 @@
-from abc import ABCMeta
-from functools import reduce
+class Node(object):
+
+    def __init__(self, indent):
+        self.__indent = indent
+
+    @property
+    def indent(self):
+        return self.__indent
 
 
-
-class INode(metaclass=ABCMeta):
-    pass
-
-
-class Program(object):
+class Program(Node):
 
     def __init__(self, children=[]):
+        super(Program, self).__init__(-1)
         self.__children = children
 
     @property
@@ -20,20 +22,10 @@ class Program(object):
         self.__children.append(child)
 
 
-class Node(INode):
+class TextNode(object):
 
-    def __init__(self, parent):
-        self.__parent = parent
-
-    @property
-    def parent(self):
-        return self.__parent
-
-
-class TextNode(Node):
-
-    def __init__(self, parent, text=""):
-        super(TextNode, self).__init__(parent)
+    def __init__(self, text=""):
+        super(TextNode, self).__init__()
         self.__text = text
 
     @property
@@ -46,10 +38,15 @@ class TextNode(Node):
 
 class SelfNode(Node):
 
-    def __init__(self, parent, indent=0, attributes=[]):
-        super(SelfNode, self).__init__(parent)
+    def __init__(self, name, indent, attributes=[]):
+        super(SelfNode, self).__init__(indent)
+        self.__name = name
         self.__attributes = attributes
         self.__indent = indent
+
+    @property
+    def name(self):
+        return self.__name
 
     @property
     def indent(self):
@@ -65,8 +62,8 @@ class SelfNode(Node):
 
 class DefaultNode(SelfNode):
 
-    def __init__(self, parent, indent=0, attributes=[], children=[]):
-        super(DefaultNode, self).__init__(parent, indent, attributes)
+    def __init__(self, name, indent, attributes=[], children=[]):
+        super(DefaultNode, self).__init__(name, indent, attributes)
         self.__children = children
 
     @property
