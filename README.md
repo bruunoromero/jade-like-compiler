@@ -13,7 +13,8 @@ html
     input(type=text)
     span I'm a span
     table
-      tr ohh, look, a table 
+      tr 
+        td ohh, look, a table 
 ```
 
 becomes this:
@@ -28,15 +29,18 @@ becomes this:
     <div class="main">
       this is a div
     </div>
-    <input type="text"  />
+    <input type="text"/>
     <span>
       I'm a span
     </span>
     <table>
       <tr>
-        ohh, look, a table 
+        <td>
+          ohh, look, a table 
+        </td>
       </tr>
     </table>
   </body>
 </html>
+
 ```
