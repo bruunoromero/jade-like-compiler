@@ -13,8 +13,7 @@ html
     input(type=text)
     span I'm a span
     table
-      tr
-        ohh, look, a table 
+      tr ohh, look, a table 
 ```
 
 becomes this:
