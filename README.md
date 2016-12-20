@@ -9,7 +9,7 @@ html
   head
     title my page title
   body
-    div(class=main) this is a div
+    div(class=block, id=main) this is a div
     input(type=text)
     span I'm a span
     table
@@ -26,7 +26,7 @@ becomes this:
     </title>
   </head>
   <body>
-    <div class="main">
+    <div class="block" id="main">
       this is a div
     </div>
     <input type="text"/>
